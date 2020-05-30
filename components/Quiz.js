@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Text, View, StyleSheet } from 'react-native'
 import FlashyButton from './shared/FlashyButton'
 import FlashyStyles from './shared/flashyStyles'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { clearLocalNotification, notifyTomorrow } from '../utils/notifications'
 
 const Quiz = ({ deck, navigation }) => {
     const questions = deck.questions
     const [index, setIndex] = useState(0)
+    const quizFinished = index === questions.length
+
     const [showAnswer, setShowAnswer] = useState(false) //man! I really wanted to use `useReducer` :-(
     const toggleShowAnswer = () => setShowAnswer(!showAnswer)
-
     const [score, updateScore] = useState(0)
     const correctAnswer = () => {
         updateScore(score + 1)
@@ -27,9 +29,16 @@ const Quiz = ({ deck, navigation }) => {
 
     const question = questions[index]
 
+    useEffect(() => {
+        if (quizFinished) {
+            clearLocalNotification()
+            notifyTomorrow()
+        }
+    }, [index])
+
     return (
         <View style={styles.container}>
-            {(index === questions.length) ?
+            {quizFinished ?
                 (<View>
                     <Text style={styles.score}>You scored {score}/{questions.length}</Text>
                     <FlashyButton onPress={retake}>Retake</FlashyButton>

@@ -14,6 +14,7 @@ import Home from './components/Home'
 import { loadStoredDecks } from './deck-state/actions'
 import NewQuestion from './components/NewQuestion'
 import Quiz from './components/Quiz'
+import { notifyTomorrow } from './utils/notifications'
 
 
 const store = createStore(decksReducer, middleware)
@@ -22,6 +23,7 @@ const Stack = createStackNavigator()
 const App = () => {
   useEffect(() => {
     store.dispatch(loadStoredDecks())
+    notifyTomorrow()
   })
   return (<Provider store={store}>
     <NavigationContainer>
