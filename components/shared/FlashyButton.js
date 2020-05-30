@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
-import FlashyStyles from './shared/flashyStyles'
+import FlashyStyles from './flashyStyles'
 
 const FlashyButton = ({ children, onPress, ...props }) => (
     <TouchableOpacity style={[FlashyStyles.roundedBorder, styles.flashyButton, { backgroundColor: props.disabled ? 'darkgrey' : '#000' }]} {...props} onPress={onPress} >

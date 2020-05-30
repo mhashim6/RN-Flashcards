@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Text, View, StyleSheet } from 'react-native'
-import FlashyButton from './FlashyButton'
+import FlashyButton from './shared/FlashyButton'
 import FlashyStyles from './shared/flashyStyles'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 

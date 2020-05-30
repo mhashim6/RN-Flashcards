@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { TextInput, View, StyleSheet } from 'react-native'
-import FlashyButton from './FlashyButton'
+import FlashyButton from './shared/FlashyButton'
 import FlashyStyles from './shared/flashyStyles'
 import { connect } from 'react-redux'
 import { addQuestionToDeck } from '../deck-state/actions'

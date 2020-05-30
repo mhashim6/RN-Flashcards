@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 
-import FlashyButton from './FlashyButton'
+import FlashyButton from './shared/FlashyButton'
 
 const DeckDetail = ({ deck, navigation }) => {
 
