@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { TextInput, View, StyleSheet } from 'react-native'
+import { TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { connect } from 'react-redux'
 import FlashyButton from './shared/FlashyButton'
 import FlashyStyles from './shared/flashyStyles'
-import { connect } from 'react-redux'
 import { addQuestionToDeck } from '../deck-state/actions'
 
 
@@ -21,9 +21,9 @@ const NewQuestion = ({ deck, navigation, dispatch }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
             <TextInput
-                style={[FlashyStyles.textInput, FlashyStyles.roundedBorder, {marginBottom: 8}]}
+                style={[FlashyStyles.textInput, FlashyStyles.roundedBorder, { marginBottom: 8 }]}
                 value={question}
                 onChangeText={setQuestion}
                 placeholder='Type the question here…' />
@@ -35,7 +35,7 @@ const NewQuestion = ({ deck, navigation, dispatch }) => {
             <FlashyButton onPress={save} disabled={isBlankQuestion} >
                 Add Question
             </FlashyButton>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 

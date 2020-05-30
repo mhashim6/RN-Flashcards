@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { TextInput, View, StyleSheet } from 'react-native'
+import { TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 
 import FlashyButton from './shared/FlashyButton'
-import { newDeck } from '../utils/api'
 import FlashyStyles from './shared/flashyStyles'
 import { createDeck } from '../deck-state/actions'
 
@@ -18,7 +17,7 @@ const NewDeck = ({ dispatch, navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior='padding'>
             <TextInput
                 style={[FlashyStyles.textInput, FlashyStyles.roundedBorder]}
                 value={deckTitle}
@@ -27,7 +26,7 @@ const NewDeck = ({ dispatch, navigation }) => {
             <FlashyButton onPress={addDeck} disabled={isBlankTitle} >
                 Create Deck
             </FlashyButton>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 
