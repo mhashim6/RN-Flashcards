@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Platform } from 'react-native'
+import { Platform } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Ionicons } from '@expo/vector-icons'
 
@@ -10,7 +10,17 @@ import Tabs from './Tabs'
 
 const Home = () => {
     return (
-        <Tabs.Navigator initialRouteName='Decks'>
+        <Tabs.Navigator initialRouteName='Decks'
+            tabBarOptions={{
+                activeTintColor: Platform.OS === 'ios' ? '#562349' : 'white',
+                style: {
+                    backgroundColor: Platform.OS === 'ios' ? 'white' : '#562349'
+                }
+            }}
+            activeColor="white" //android
+            inactiveColor="darkgrey"//android
+            barStyle={{ backgroundColor: '#562349' }} //android
+        >
             <Tabs.Screen
                 name="Decks"
                 component={DeckList}
@@ -30,7 +40,7 @@ const Home = () => {
                 })}
                 component={NewDeck}
             />
-        </Tabs.Navigator>
+        </Tabs.Navigator >
     );
 }
 
