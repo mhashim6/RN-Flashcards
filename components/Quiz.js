@@ -17,14 +17,17 @@ const Quiz = ({ deck, navigation }) => {
     const correctAnswer = () => {
         updateScore(score + 1)
         setIndex(index + 1)
+        setShowAnswer(false)
     }
     const incorrectAnswer = () => {
         setIndex(index + 1)
+        setShowAnswer(false)
     }
 
     const retake = () => {
         updateScore(0)
         setIndex(0)
+        setShowAnswer(false)
     }
 
     const question = questions[index]
@@ -46,7 +49,7 @@ const Quiz = ({ deck, navigation }) => {
                 </View>
                 ) : (<View>
                     <Text style={styles.index}>Question {index}/{questions.length}</Text>
-                    <TouchableOpacity onPress={toggleShowAnswer}>
+                    <TouchableOpacity onPress={toggleShowAnswer}> 
                         <Text style={styles.card}>
                             {showAnswer ? question.answer : question.question}
                         </Text>
